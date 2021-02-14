@@ -47,7 +47,13 @@
                 <h1 class="text-center">Music Lyric Search</h1>
                 <div class="search-box my-5">
                     <input type="text" class="form-control" placeholder="Enter your artist song name" id="searchText">
-                    <button class="btn btn-success search-btn" onclick="searchMusic()">Search</button>
+                    <button class="btn btn-success search-btn" id="searchBtn" onclick="searchMusic()">Search</button>
+                </div>
+            </div>
+            <!-- Spinner -->
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-success d-none" id="loadingSpinner" role="status">
+                    <span class="sr-only">Loading...</span>
                 </div>
             </div>
             <!-- Single Lyrics -->

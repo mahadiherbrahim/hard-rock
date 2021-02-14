@@ -1,7 +1,15 @@
+//Enter Key Functionality
+document.getElementById('searchText').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('searchBtn').click();
+    }
+});
+
 const searchMusic = async() => {
     const searchText = document.getElementById('searchText').value
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
     try {
+        toggleSpinner();
         const response = await fetch(url);
         const data = await response.json();
         displaySong(data.data)
@@ -30,6 +38,7 @@ const displaySong = songs => {
             </div>
         `
         songsContainer.appendChild(songsDiv)
+        toggleSpinner();
     });
 }
 
@@ -54,4 +63,8 @@ const displayLyrics = lyrics => {
 const errorMessage = error => {
     const eMessage = document.getElementById('error-message')
     eMessage.innerText = error
+}
+const toggleSpinner = () => {
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    loadingSpinner.classList.toggle('d-none')
 }
